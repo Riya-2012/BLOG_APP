@@ -31,7 +31,7 @@ const dispatch=useDispatch();
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
-      setImageFileUrl(URL.createObjectURL(file)); // Local preview of the selected image
+      setImageFileUrl(URL.createObjectURL(file)); 
     }
   };
 
@@ -39,8 +39,9 @@ const dispatch=useDispatch();
     if (imageFile) {
       uploadImage();
     }
-  }, [imageFile]); // Dependency should be imageFile only, not [[imageFile]]
-
+  }, [imageFile]); 
+  
+  
   const uploadImage = async () => {
     console.log("Uploading image...");
     setImageFileUploading(true);
@@ -69,13 +70,13 @@ const dispatch=useDispatch();
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImageFileUrl(downloadURL); // Set the URL to the uploaded image
+          setImageFileUrl(downloadURL); 
           setFormData({...formData,profilePicture:downloadURL}
 
         );
         setImageFileUploading(false);
         
-          // setImageFileUploadProgress(null); // Reset progress after upload
+          
         });
       }
     );
